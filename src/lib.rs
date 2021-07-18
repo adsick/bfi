@@ -4,7 +4,8 @@ pub use program::*;
 use std::ops::{AddAssign, SubAssign};
 
 //fixed size of program memory and data memory
-const MEM: usize = 128;
+const MEM: usize = 1024;
+const LIMIT: u16 = u16::MAX;
 
 type BfResult = Result<(), BfError>;
 pub struct Bf {
@@ -12,6 +13,7 @@ pub struct Bf {
     program: BfProgram,
     cmd_indx: usize,
     data_ptr: usize,
+    limit: usize,
 }
 
 impl Bf {
@@ -21,6 +23,7 @@ impl Bf {
             program,
             cmd_indx: 0,
             data_ptr: 0,
+            limit: 0,
         }
     }
     fn tick(&mut self) -> BfResult {
@@ -96,6 +99,12 @@ impl Bf {
             #[cfg(feature = "debug")]
             {
                 println!("{:?}", self.data);
+                println!("step: {}", self.limit);
+            }
+            self.limit+=1;
+            if self.limit > LIMIT as usize{
+                eprint!("time limit reached. force stop.");
+                break;
             }
         }
         res
