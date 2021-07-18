@@ -51,7 +51,7 @@ impl BfProgram {
     }
 }
 
-impl<'a> IntoIterator for &'a BfProgram{
+impl<'a> IntoIterator for &'a BfProgram {
     type Item = &'a BfCommand;
 
     type IntoIter = Iter<'a, BfCommand>;
@@ -60,7 +60,6 @@ impl<'a> IntoIterator for &'a BfProgram{
         self.commands.iter()
     }
 }
-
 
 #[derive(Debug, Clone, Copy)]
 pub enum BfCommand {

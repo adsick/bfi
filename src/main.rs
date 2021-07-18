@@ -9,7 +9,7 @@ fn main() {
     io::stdin()
         .read_line(&mut usr_input)
         .expect("smth really bad happened");
-    if let Ok(program) = BfProgram::new(usr_input){
+    if let Ok(program) = BfProgram::new(usr_input) {
         let mut bf = Bf::new(program);
         bf.execute();
     } else {

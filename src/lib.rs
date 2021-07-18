@@ -2,7 +2,6 @@ pub mod program;
 
 pub use program::*;
 
-
 use std::ops::{AddAssign, SubAssign};
 
 //fixed size of program memory and data memory
@@ -103,8 +102,8 @@ impl Bf {
                 println!("{:?}", self.data);
                 println!("step: {}", self.limit);
             }
-            self.limit+=1;
-            if self.limit > LIMIT as usize{
+            self.limit += 1;
+            if self.limit > LIMIT as usize {
                 eprint!("time limit reached. force stop.");
                 break;
             }
