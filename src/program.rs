@@ -1,3 +1,5 @@
+use std::slice::Iter;
+
 use super::MEM;
 
 pub struct BfProgram {
@@ -48,6 +50,17 @@ impl BfProgram {
         Ok(commands)
     }
 }
+
+impl<'a> IntoIterator for &'a BfProgram{
+    type Item = &'a BfCommand;
+
+    type IntoIter = Iter<'a, BfCommand>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        self.commands.iter()
+    }
+}
+
 
 #[derive(Debug, Clone, Copy)]
 pub enum BfCommand {

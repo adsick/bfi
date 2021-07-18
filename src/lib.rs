@@ -1,5 +1,7 @@
-mod program;
+pub mod program;
+
 pub use program::*;
+
 
 use std::ops::{AddAssign, SubAssign};
 
